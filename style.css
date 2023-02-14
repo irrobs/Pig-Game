@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
 
 * {
   margin: 0;
@@ -12,7 +12,7 @@ html {
 }
 
 body {
-  font-family: 'Nunito', sans-serif;
+  font-family: "Nunito", sans-serif;
   font-weight: 400;
   height: 100vh;
   color: #333;
@@ -104,6 +104,11 @@ main {
 }
 
 /* ABSOLUTE POSITIONED ELEMENTS */
+#mode--container {
+  position: absolute;
+  left: 10vw;
+}
+
 .btn {
   position: absolute;
   left: 50%;
@@ -127,14 +132,46 @@ main {
   box-shadow: 0 1.75rem 3.5rem rgba(0, 0, 0, 0.1);
 }
 
-.btn::first-letter {
-  font-size: 2.4rem;
-  display: inline-block;
-  margin-right: 0.7rem;
+#mode--container h1 {
+  position: absolute;
+  bottom: 25rem;
+  font-size: 4rem;
+  left: -7rem;
+  text-transform: uppercase;
+  color: black;
+  opacity: 0.8;
+}
+
+.btn--mode1 {
+  bottom: 15rem;
+  width: 12vw;
+  font-size: 2.5rem;
+  padding: 2rem 3rem;
+  font-weight: 700;
+}
+
+.btn--mode2 {
+  bottom: -5rem;
+  width: 12vw;
+  font-size: 2.5rem;
+  padding: 2rem 3rem;
+  font-weight: 700;
+}
+
+.btn--mode3 {
+  bottom: -25rem;
+  width: 12vw;
+  font-size: 2.5rem;
+  padding: 2rem 3rem;
+  font-weight: 700;
 }
 
 .btn--new {
   top: 4rem;
+}
+
+.btn--rules {
+  top: 20rem;
 }
 .btn--roll {
   top: 39.3rem;
