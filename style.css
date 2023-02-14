@@ -135,8 +135,8 @@ main {
 #mode--container h1 {
   position: absolute;
   bottom: 25rem;
-  font-size: 4rem;
-  left: -7rem;
+  font-size: 3rem;
+  left: -5rem;
   text-transform: uppercase;
   color: black;
   opacity: 0.8;
@@ -171,7 +171,7 @@ main {
 }
 
 .btn--rules {
-  top: 20rem;
+  top: 53.3rem;
 }
 .btn--roll {
   top: 39.3rem;
