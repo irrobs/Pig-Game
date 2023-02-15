@@ -142,28 +142,30 @@ main {
   opacity: 0.8;
 }
 
-.btn--mode1 {
+.btn--mode {
+  width: 12vw;
+  font-size: 2.5rem;
+  padding: 2rem 3rem;
+  font-weight: 700;
+}
+
+.mode1 {
   bottom: 15rem;
-  width: 12vw;
-  font-size: 2.5rem;
-  padding: 2rem 3rem;
-  font-weight: 700;
 }
 
-.btn--mode2 {
+.mode2 {
   bottom: -5rem;
-  width: 12vw;
-  font-size: 2.5rem;
-  padding: 2rem 3rem;
-  font-weight: 700;
 }
 
-.btn--mode3 {
+.mode3 {
   bottom: -25rem;
-  width: 12vw;
-  font-size: 2.5rem;
-  padding: 2rem 3rem;
-  font-weight: 700;
+}
+
+.active--mode {
+  position: absolute;
+  bottom: -35rem;
+
+  font-size: 3rem;
 }
 
 .btn--new {
@@ -178,6 +180,10 @@ main {
 }
 .btn--hold {
   top: 46.1rem;
+}
+
+.btn--close {
+  cursor: pointer;
 }
 
 .btn:active {
@@ -205,4 +211,29 @@ main {
 .player--winner .name {
   font-weight: 700;
   color: #c7365f;
+}
+
+/* Modals*/
+.overlay {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+
+  z-index: 5;
+}
+
+.modal--rules,
+.modal--modes {
+  position: absolute;
+  width: 70%;
+  height: 70%;
+  font-size: 16px;
+
+  padding: 5rem;
+  border-radius: 8rem;
+
+  background-color: white;
+
+  z-index: 10;
 }

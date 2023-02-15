@@ -132,18 +132,35 @@ btnNew.addEventListener('click', resetGame);
 // Selecting elements
 const player0El = document.querySelector(".player--0");
 const player1El = document.querySelector(".player--1");
+
 const score0El = document.querySelector("#score--0");
 const score1El = document.getElementById("score--1");
+
 const current0El = document.getElementById("current--0");
 const current1El = document.getElementById("current--1");
 
 const diceEl = document.querySelector(".dice");
+
 const btnNew = document.querySelector(".btn--new");
 const btnRoll = document.querySelector(".btn--roll");
 const btnHold = document.querySelector(".btn--hold");
+const btnRules = document.querySelector(".btn--rules");
+const btnClose = document.querySelectorAll(".btn--close");
+const btnModes = document.querySelectorAll(".btn--mode");
+const btnYes = document.querySelector(".btn--yes");
+const btnNo = document.querySelector(".btn--no");
+
+const overlay = document.querySelector(".overlay");
+const modalRules = document.querySelector(".modal--rules");
+const modalModes = document.querySelector(".modal--modes");
+
+const activeMode = document.querySelector(".active--mode");
 
 // Starting conditions;
-let scores, currentScore, activePlayer, playing;
+let scores, currentScore, activePlayer, playing, modeScore;
+modeScore = 100;
+
+activeMode.textContent = modeScore;
 
 const init = function () {
   scores = [0, 0];
@@ -172,6 +189,37 @@ const switchPlayer = function () {
   player1El.classList.toggle("player--active");
 };
 
+const openModesModal = function (e) {
+  overlay.classList.remove("hidden");
+  modalModes.classList.remove("hidden");
+  let clicked = Array.from(e.currentTarget.classList);
+
+  const switchModes = function () {
+    if (clicked.includes("mode1")) {
+      modeScore = 50;
+      activeMode.textContent = modeScore;
+    } else if (clicked.includes("mode2")) {
+      modeScore = 100;
+      activeMode.textContent = modeScore;
+    } else if (clicked.includes("mode3")) {
+      modeScore = 150;
+      activeMode.textContent = modeScore;
+    }
+  };
+
+  btnYes.addEventListener("click", switchModes);
+  btnNo.addEventListener("click", closeModal);
+};
+
+const closeModal = function () {
+  overlay.classList.add("hidden");
+  if (!modalRules.classList.contains("hidden")) {
+    modalRules.classList.add("hidden");
+  } else if (!modalModes.classList.contains("hidden")) {
+    modalModes.classList.add("hidden");
+  }
+};
+
 // Rolling dice functionality
 btnRoll.addEventListener("click", function () {
   if (playing) {
@@ -193,6 +241,7 @@ btnRoll.addEventListener("click", function () {
   }
 });
 
+// Holding score
 btnHold.addEventListener("click", function () {
   if (playing) {
     // 1. Add current score to active player score
@@ -200,7 +249,7 @@ btnHold.addEventListener("click", function () {
     document.getElementById(`score--${activePlayer}`).textContent =
       scores[activePlayer];
     // 2. Check if player's score is >= 100
-    if (scores[activePlayer] >= 100) {
+    if (scores[activePlayer] >= modeScore) {
       //finish the game
       playing = false;
       diceEl.classList.add("hidden");
@@ -218,6 +267,27 @@ btnHold.addEventListener("click", function () {
   }
 });
 
+// restart game
 btnNew.addEventListener("click", init);
 
-// TODO: add to git repo. Improvements: Add rules button and modal when button clicked, add 2 more mode(50 points, 100points, 150 points) and 1 button to change modes for each mode, add winner text in winning player. Maybe: change CSS.
+// opening/closing rules modal
+btnRules.addEventListener("click", function () {
+  overlay.classList.remove("hidden");
+  modalRules.classList.remove("hidden");
+});
+
+overlay.addEventListener("click", closeModal);
+
+for (let i = 0; i < btnClose.length; i++) {
+  btnClose[i].addEventListener("click", closeModal);
+}
+
+for (let i = 0; i < btnModes.length; i++) {
+  btnModes[i].addEventListener("click", openModesModal);
+}
+
+// TODO: Improvements: add 2 more mode(50 points, 100points, 150 points) Maybe: change CSS.
+
+/*
+Problem: Change modal modes text based on active mode.
+*/

@@ -17,6 +17,7 @@
           <p class="current-score" id="current--0">0</p>
         </div>
       </section>
+
       <section class="player player--1">
         <h2 class="name" id="name--1">Player 2</h2>
         <p class="score" id="score--1">24</p>
@@ -35,11 +36,54 @@
 
     <section id="mode--container">
       <h1>Modes:</h1>
-      <button class="btn btn--mode1">50 points</button>
-      <button class="btn btn--mode2">100 points</button>
-      <button class="btn btn--mode3">150 points</button>
+      <button class="btn btn--mode mode1">50 points</button>
+      <button class="btn btn--mode mode2">100 points</button>
+      <button class="btn btn--mode mode3">150 points</button>
+      <p class="active--mode"></p>
     </section>
+    <div class="modal--modes hidden">
+      <div class="btn--close">&times;</div>
+      <div class="mode--switch">
+        <p></p>
+        <button class="btn--yes">YES</button>
+        <button class="btn--no">NO</button>
+      </div>
+    </div>
+    <div class="modal--rules hidden">
+      <div class="btn--close">&times;</div>
+      <h1>Rules of the Game:</h1>
+      <p>
+        <strong>1 -</strong> The active player clicks in the Roll Dice button. A
+        number between 1 and 6 will be rolled.
+      </p>
+      <p>
+        <strong>2 -</strong> If you roll a 1, it will change to the other player
+        to play and your current score will become 0. If you rolled a number
+        different than 1,you add the rolled number to your current score and you
+        can choose between Holding the score and Rolling again.
+      </p>
+      <p>
+        <strong>3 -</strong> If you decide to roll again, you will acumulate
+        more points at your current scores as long as you roll more than 1.
+      </p>
+      <p>
+        <strong>4 -</strong> If you decide to Hold, you current score will be
+        added to your total score, your current score will become 0, and the
+        active player will be switched to the other player.
+      </p>
+      <p>
+        <strong>5 -</strong> The first player that gets 50 points, 100 points or
+        150 points to the Total score after Holding, depending on the mode you
+        are playing, wins the game.
+      </p>
+      <p>
+        <strong>6 -</strong> Click in the New game button if you want to restart
+        the game. Click in the different modes buttons to switch modes.
+      </p>
+      <p><strong>7 -</strong> Have fun!!!</p>
+    </div>
 
+    <div class="overlay hidden"></div>
     <script src="script.js"></script>
   </body>
 </html>
