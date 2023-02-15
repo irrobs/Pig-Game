@@ -315,9 +315,3 @@ for (let i = 0; i < btnClose.length; i++) {
 for (let i = 0; i < btnModes.length; i++) {
   btnModes[i].addEventListener("click", openModesModal);
 }
-
-// TODO: Improvements: Add restart game function after changing modes, add text to modes modal.
-
-/*
-Problem: Change modal modes text based on active mode.
-*/
