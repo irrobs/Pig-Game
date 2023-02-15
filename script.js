@@ -153,6 +153,7 @@ const btnNo = document.querySelector(".btn--no");
 const overlay = document.querySelector(".overlay");
 const modalRules = document.querySelector(".modal--rules");
 const modalModes = document.querySelector(".modal--modes");
+const modalVerification = document.querySelector(".modal--verification");
 
 const activeMode = document.querySelector(".active--mode");
 
@@ -190,25 +191,41 @@ const switchPlayer = function () {
 };
 
 const openModesModal = function (e) {
-  overlay.classList.remove("hidden");
-  modalModes.classList.remove("hidden");
-  let clicked = Array.from(e.currentTarget.classList);
+  if (playing) {
+    overlay.classList.remove("hidden");
+    modalModes.classList.remove("hidden");
+    let clicked = Array.from(e.currentTarget.classList);
 
-  const switchModes = function () {
     if (clicked.includes("mode1")) {
-      modeScore = 50;
-      activeMode.textContent = modeScore;
+      modalVerification.textContent = `Would you like to switch to 50 points mode?`;
     } else if (clicked.includes("mode2")) {
-      modeScore = 100;
-      activeMode.textContent = modeScore;
+      modalVerification.textContent = `Would you like to switch to 100 points mode?`;
     } else if (clicked.includes("mode3")) {
-      modeScore = 150;
-      activeMode.textContent = modeScore;
+      modalVerification.textContent = `Would you like to switch to 150 points mode?`;
     }
-  };
 
-  btnYes.addEventListener("click", switchModes);
-  btnNo.addEventListener("click", closeModal);
+    const switchModes = function () {
+      if (clicked.includes("mode1")) {
+        modeScore = 50;
+        activeMode.textContent = modeScore;
+        init();
+        closeModal();
+      } else if (clicked.includes("mode2")) {
+        modeScore = 100;
+        activeMode.textContent = modeScore;
+        init();
+        closeModal();
+      } else if (clicked.includes("mode3")) {
+        modeScore = 150;
+        activeMode.textContent = modeScore;
+        init();
+        closeModal();
+      }
+    };
+
+    btnYes.addEventListener("click", switchModes);
+    btnNo.addEventListener("click", closeModal);
+  }
 };
 
 const closeModal = function () {
@@ -286,7 +303,7 @@ for (let i = 0; i < btnModes.length; i++) {
   btnModes[i].addEventListener("click", openModesModal);
 }
 
-// TODO: Improvements: add 2 more mode(50 points, 100points, 150 points) Maybe: change CSS.
+// TODO: Improvements: Add restart game function after changing modes, add text to modes modal.
 
 /*
 Problem: Change modal modes text based on active mode.
