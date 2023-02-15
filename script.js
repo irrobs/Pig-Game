@@ -149,6 +149,9 @@ const btnClose = document.querySelectorAll(".btn--close");
 const btnModes = document.querySelectorAll(".btn--mode");
 const btnYes = document.querySelector(".btn--yes");
 const btnNo = document.querySelector(".btn--no");
+const mode1 = document.querySelector(".mode1");
+const mode2 = document.querySelector(".mode2");
+const mode3 = document.querySelector(".mode3");
 
 const overlay = document.querySelector(".overlay");
 const modalRules = document.querySelector(".modal--rules");
@@ -160,8 +163,6 @@ const activeMode = document.querySelector(".active--mode");
 // Starting conditions;
 let scores, currentScore, activePlayer, playing, modeScore;
 modeScore = 100;
-
-activeMode.textContent = modeScore;
 
 const init = function () {
   scores = [0, 0];
@@ -179,6 +180,12 @@ const init = function () {
   player1El.classList.remove("player--winner");
   player0El.classList.add("player--active");
   player1El.classList.remove("player--active");
+
+  if (modeScore === 100) {
+    mode2.style.backgroundColor = "white";
+    mode1.removeAttribute("style");
+    mode3.removeAttribute("style");
+  }
 };
 init();
 
@@ -207,17 +214,23 @@ const openModesModal = function (e) {
     const switchModes = function () {
       if (clicked.includes("mode1")) {
         modeScore = 50;
-        activeMode.textContent = modeScore;
+        mode1.style.backgroundColor = "white";
+        mode2.removeAttribute("style");
+        mode3.removeAttribute("style");
         init();
         closeModal();
       } else if (clicked.includes("mode2")) {
         modeScore = 100;
-        activeMode.textContent = modeScore;
+        mode2.style.backgroundColor = "white";
+        mode1.removeAttribute("style");
+        mode3.removeAttribute("style");
         init();
         closeModal();
       } else if (clicked.includes("mode3")) {
         modeScore = 150;
-        activeMode.textContent = modeScore;
+        mode3.style.backgroundColor = "white";
+        mode1.removeAttribute("style");
+        mode2.removeAttribute("style");
         init();
         closeModal();
       }
